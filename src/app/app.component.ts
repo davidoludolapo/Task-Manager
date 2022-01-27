@@ -8,6 +8,7 @@ import {TaskInterface } from './type/task.interface';
 })
 export class AppComponent {
  title = 'Task Manager'
+ isDisabled = false;
 
  
  public name:string = ''

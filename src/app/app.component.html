@@ -10,7 +10,7 @@
         <form  class="text-center text-light my-4 add">
           <!-- <label for="todos" class="text-light">Task Manager</label> -->
           <input type="text" name="name" placeholder="Add.." [(ngModel)]="name" class="form-control"> <br>
-          <button class="btn btn-danger btn-block" *ngIf="!editData; else elseBlock"  (click)="addTask($event)">Add Entry</button> <br>
+          <button class="btn btn-danger btn-block" [disabled]="!name.length" type="submit" *ngIf="!editData; else elseBlock"  (click)="addTask($event)">Add Entry</button> <br>
           <ng-template #elseBlock><button class="btn btn-success btn-block" (click)="saveChanges()">Save Changes</button></ng-template>
         </form>
         
