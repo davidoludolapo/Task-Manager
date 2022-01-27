@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StudentInterface } from './type/student.interface';
+import {TaskInterface } from './type/task.interface';
 
 @Component({
   selector: 'app-root',
@@ -7,59 +7,45 @@ import { StudentInterface } from './type/student.interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
- title = 'first-class'
+ title = 'Task Manager'
 
  
  public name:string = ''
- public department:string = ''
- public level?:number; 
- public matNumber?:number; 
- public email:string= '';
- public allStudents:Array<StudentInterface>=[];
+ public allTasks:Array<TaskInterface>=[];
  public editData:boolean= false;
  public editedIndex:number= 0
  
 
- addStudent() {
-   let {name,department,level,matNumber,email} = this
-   this.allStudents.push({name,department,level,matNumber,email})
-   console.log(this.allStudents)
-   this.name =''
-   this.department =''
-   this.level = undefined 
-   this.matNumber=undefined;
-   this.email =''
+ addTask(e:any) {
+   e.preventDefault()
+   let name = this.name
+   this.allTasks.push({name})
+   this.name= ''
+  
  }
 
- deleteStudent(i:number){
-   this.allStudents =this.allStudents.filter((_,index)=>index!==i)
+ deleteTask(i:number){
+   this.allTasks =this.allTasks.filter((_,index)=>index!==i)
    
  }
 
- editStudent(i:number){
+ editTask(i:number){
   this.editData = true;
   this.editedIndex= i;
 
-  let editedObject = this.allStudents[i]
+  let editedObject = this.allTasks[i]
   this.name = editedObject.name
-  this.department = editedObject.department
-  this.level = editedObject.level
-  this.matNumber = editedObject.matNumber
-  this.email = editedObject.email
+  
  }
 
  saveChanges() {
-  let {name,department,level,matNumber,email, editedIndex} = this
-  let editedObject = {name,department,level,matNumber,email}
-  this.allStudents[editedIndex] = editedObject
+  let {name, editedIndex} = this
+  let editedObject = {name}
+  this.allTasks[editedIndex] = editedObject
   this.editData =false
   
   this.name= ''
-  this.department =''
-  this.level = undefined
-  this.matNumber = undefined
-  this.email = ''
-
+  
  }
 
 }

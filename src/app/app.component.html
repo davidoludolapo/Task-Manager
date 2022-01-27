@@ -1,61 +1,32 @@
 <div class="body">
-  <div class="container mt-4">
-    <div class="row">
-  
-      <div class="col-4 shadow p-5 mx-auto">
+  <div class="container p-4 shadow">
+    <!-- <div class="row">
+   -->
+      <!-- <div class="col-6 shadow p-5 mx-auto"> -->
     
-        <h4 class="text-center text-light">My Checklist</h4>
+        <h4 class="text-center text-light">Task Manager</h4>
 
         
         <form  class="text-center text-light my-4 add">
-          <label for="todos" class="text-light">Add todos</label>
-          <input type="text" placeholder="Enter your name" [(ngModel)]="name" class="form-control"> <br>
-          <button class="btn btn-danger btn-block" *ngIf="!editData; else elseBlock"  (click)="addStudent()">Add Entry</button> <br>
+          <!-- <label for="todos" class="text-light">Task Manager</label> -->
+          <input type="text" name="name" placeholder="Add.." [(ngModel)]="name" class="form-control"> <br>
+          <button class="btn btn-danger btn-block" *ngIf="!editData; else elseBlock"  (click)="addTask($event)">Add Entry</button> <br>
           <ng-template #elseBlock><button class="btn btn-success btn-block" (click)="saveChanges()">Save Changes</button></ng-template>
         </form>
         
-        <ul class="list-group mx-auto todos" *ngFor="let student of allStudents let i = index">
-          <li class="list-group-item align-items-center d-flex justify-content-end text-light" > <span>{{student.name}}</span><span><i class="far fa-trash-alt delete mx-2" (click)="deleteStudent(i)"></i></span><span><i class="fas fa-user-edit edit" (click)="editStudent(i)"></i></span></li>
+        <ul class="list-group mx-auto todos" >
+          <li class="list-group-item align-items-center d-flex justify-content-between text-light" *ngFor="let task of allTasks let i = index"> 
+            <span>{{task.name}}</span>
+            <div>
+              <span><i class="far fa-trash-alt delete mx-3 text-danger" (click)="deleteTask(i)"></i></span>
+              <span><i class="fas fa-user-edit edit text-info" (click)="editTask(i)"></i></span>
+            </div>
+          </li>
       </ul>
        
-      </div>
-    </div>
+      <!-- </div> -->
+    <!-- </div> -->
 
   </div> 
 </div>
 
-<!-- <hr>
-<div class="container mt-4 text-light">
-  <div class="row">
-
-    <div class="col-12 shadow p-5 mx-auto bg-info">
-  
-      <h4 class="text-center">List of students</h4>
-      <div>
-        <table border="1" class="table table-striped">
-            <tr>
-              <th>S/n</th>
-              <th>Name</th>
-              <th>Department</th>
-              <th>Level</th>
-              <th>Mat. Number</th>
-              <th>Email</th>
-              <th>Delete</th>
-              <th>Edit</th>
-            </tr>
-            <tr *ngFor="let student of allStudents let i = index">
-              <td>{{i+1}}</td>
-              <td>{{student.name}}</td>
-              <td>{{student.department}}</td>
-              <td>{{student.level}}</td>
-              <td>{{student.matNumber}}</td>
-              <td>{{student.email}}</td>
-              <td><button class="btn btn-danger"  (click)="deleteStudent(i)">Delete</button></td>
-              <td><button class="btn btn-primary" (click)="editStudent(i)">Edit</button></td>
-            </tr>
-        </table>
-      </div>
-      
-    </div>
-  </div>
-</div> -->
